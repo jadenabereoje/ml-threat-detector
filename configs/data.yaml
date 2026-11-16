@@ -1,0 +1,35 @@
+# Settings for `python -m detector.data` (make data)
+
+raw_dir: data/raw/cicids2017      # folder of CSVs, one per capture day
+out_dir: data/interim
+out_name: cicids2017_clean.parquet
+
+# Column that holds the class label (matched after names are snake_cased)
+label_column: label
+
+# Corrected (WTMC 2021) data labels some flows "<attack> - Attempted":
+# the attack was launched but had no effect. Options:
+#   benign  -> relabel as BENIGN (no malicious effect reached the victim)
+#   keep    -> keep as its own class, e.g. "SSH-Patator - Attempted"
+#   drop    -> remove those rows
+attempted_policy: benign
+
+# Rows with NaN after replacing +/-inf are dropped and counted in the report
+drop_nan_rows: true
+
+# Exact-duplicate rows: counted always, dropped only if true
+drop_duplicates: false
+
+# Store numeric columns as float32 to halve memory use
+downcast_float32: true
+
+# Identifier columns are KEPT in interim data (needed for time-based splits
+# and lab labeling) and removed later in features.py. Listed here so the
+# report can confirm they exist.
+identifier_columns:
+  - flow_id
+  - src_ip
+  - src_port
+  - dst_ip
+  - dst_port
+  - timestamp

@@ -1,0 +1,2 @@
+start_time_utc,end_time_utc,src_ip,dst_ip,attack_type,tool,command,pcap_file,notes
+2026-11-10T14:00:00Z,2026-11-10T14:05:00Z,192.168.56.10,192.168.56.20,PortScan,nmap,nmap -sS -p 1-1024 192.168.56.20,2026-11-10_nmap_syn.pcap,EXAMPLE ROW - delete when you log your first real attack

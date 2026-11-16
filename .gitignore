@@ -1,0 +1,35 @@
+# --- Data: never commit datasets or captures ---
+data/**
+!data/**/
+!data/README.md
+!data/**/.gitkeep
+!data/lab/labels.csv
+*.pcap
+*.pcapng
+*.parquet
+*.csv.gz
+
+# --- Models and experiment tracking ---
+models/**
+!models/.gitkeep
+mlruns/
+.dvc/cache/
+
+# --- Secrets ---
+.env
+*.key
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- OS / editors ---
+.DS_Store
+.vscode/
+.idea/
